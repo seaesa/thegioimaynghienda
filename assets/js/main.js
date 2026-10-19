@@ -69,6 +69,14 @@
   toggle.addEventListener('click', function () { setMenu(true); });
   $$('[data-close]', oc).forEach(function (b) { b.addEventListener('click', function () { setMenu(false); }); });
   $$('.mnav a', oc).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  // giữ focus trong menu khi đang mở
+  oc.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || !oc.classList.contains('is-open')) return;
+    var f = $$('a, button, input', oc).filter(function (x) { return x.offsetParent; });
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   $$('.mnav__toggle', oc).forEach(function (b) {
     b.addEventListener('click', function () {
       var li = b.parentNode;
@@ -303,7 +311,6 @@
         done.hidden = false;
         done.focus();
         form.reset();
-        if (form.id === 'popupForm') setTimeout(closePopup, 2200);
       }, 900);
     });
   });
@@ -329,40 +336,9 @@
     pickOption(qCap, params.get('cap'));
   }
 
-  /* ---------- popup tư vấn: hiện một lần mỗi phiên, sau 15 giây ---------- */
-  var popup = $('#popup');
-  var lastFocus;
-  function seen() {
-    try { return sessionStorage.getItem('tl-popup') === '1'; } catch (e) { return false; }
-  }
-  function markSeen() {
-    try { sessionStorage.setItem('tl-popup', '1'); } catch (e) { /* trình duyệt chặn lưu trữ */ }
-  }
-  function busy() {
-    // không chen ngang khi khách đang điền form hoặc mở menu
-    var a = document.activeElement;
-    return oc.classList.contains('is-open') || (a && a.closest && a.closest('form'));
-  }
-  function openPopup() {
-    if (seen() || busy() || page === 'bao-gia' || page === 'lien-he') return;
-    lastFocus = document.activeElement;
-    popup.hidden = false;
-    document.body.classList.add('is-locked');
-    markSeen();
-    setTimeout(function () { $('#p-phone').focus(); }, 50);
-  }
-  function closePopup() {
-    popup.hidden = true;
-    document.body.classList.remove('is-locked');
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-  $$('[data-close]', popup).forEach(function (b) { b.addEventListener('click', closePopup); });
-  setTimeout(openPopup, 15000);
-
   window.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (!popup.hidden) closePopup();
-    else if (oc.classList.contains('is-open')) setMenu(false);
+    if (oc.classList.contains('is-open')) setMenu(false);
     else if (!searchBox.hidden) { setSearch(false); searchBtn.focus(); }
   });
 })();

@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261019c">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -340,30 +340,8 @@
     <a href="https://zalo.me/0912712772" rel="noopener"><span class="mbar__zalo">Zalo</span>Nhắn Zalo</a>
     <a href="../bao-gia/" class="mbar__quote">Báo giá</a>
   </nav>
-
-  <div class="popup" id="popup" hidden>
-    <div class="popup__bg" data-close></div>
-    <div class="popup__box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
-      <button class="popup__close" data-close aria-label="Đóng"><svg class="ico"><use href="#i-close"/></svg></button>
-      <p class="popup__title" id="popupTitle">Quý khách cần tư vấn?</p>
-      <p>Để lại số điện thoại, kỹ sư Thanh Long sẽ gọi lại tư vấn cấu hình máy phù hợp với mỏ của quý khách.</p>
-      <form class="js-form" id="popupForm" novalidate>
-        <div class="field">
-          <label class="sr-only" for="p-phone">Số điện thoại</label>
-          <input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Số điện thoại (*)" data-check="phone">
-          <p class="field__err" id="p-phone-err">Số điện thoại chưa đúng (9–11 số).</p>
-        </div>
-        <div class="field">
-          <label class="sr-only" for="p-need">Nhu cầu</label>
-          <input id="p-need" name="need" placeholder="Nhu cầu (máy, công suất...)">
-        </div>
-        <button class="button button--primary button--block" type="submit">Nhận tư vấn</button>
-        <p class="form-done" data-done hidden tabindex="-1">Cảm ơn quý khách. Kỹ sư sẽ gọi lại sớm.</p>
-      </form>
-    </div>
-  </div>
   <!-- /layout:footer -->
 
-  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/main.js?v=20261019c" defer></script>
 </body>
 </html>
