@@ -56,7 +56,8 @@
   }
   </script>
 </head>
-<body>
+<body id="top" data-page="home">
+  <!-- layout:header — sửa ở index.html rồi chạy: python3 tools/sync-layout.py -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></symbol>
@@ -75,9 +76,11 @@
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5zm-2 16-4-4 1.4-1.4 2.6 2.6 6.6-6.6L18 9z"/></symbol>
     <symbol id="i-tool" viewBox="0 0 24 24"><path d="M22.7 19 13.6 9.9a6.4 6.4 0 0 0-1.5-6.9A6.6 6.6 0 0 0 4.7 1.7l4.4 4.4-3 3-4.4-4.4A6.6 6.6 0 0 0 3 12.1a6.4 6.4 0 0 0 6.9 1.5l9.1 9.1a1 1 0 0 0 1.4 0l2.3-2.3a1 1 0 0 0 0-1.4z"/></symbol>
     <symbol id="i-quote" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm-1 7V3.5L18.5 9zM8 13h8v2H8zm0 4h5v2H8z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm-8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5C15 14.2 10.3 13 8 13zm8 0c-.3 0-.6 0-1 .1a4.2 4.2 0 0 1 2 3.4V19h6v-2.5c0-2.3-4.7-3.5-7-3.5z"/></symbol>
   </svg>
 
-  <!-- ============ HEADER ============ -->
   <header class="header" id="header">
     <div class="topbar">
       <div class="container topbar__in">
@@ -93,29 +96,36 @@
     <div class="header-wrapper" id="headerWrap">
       <div class="container masthead">
         <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="offcanvas"><svg class="ico"><use href="#i-menu"/></svg></button>
-        <a class="logo" href="#top" aria-label="Thanh Long JSC - Trang chủ">
+        <a class="logo" href="./" aria-label="Thanh Long JSC - Trang chủ">
           <img src="assets/img/logo.webp" alt="" width="52" height="51">
           <span class="logo__txt"><b>THANH LONG</b><small>Thế giới máy nghiền đá</small></span>
         </a>
         <nav class="nav" aria-label="Menu chính">
           <ul>
-            <li><a class="active" href="#top">Trang chủ</a></li>
-            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a data-nav="home" href="./">Trang chủ</a></li>
+            <li><a data-nav="gioithieu" href="gioithieu/">Giới thiệu</a></li>
             <li class="has-dropdown">
-              <a href="#san-pham" aria-haspopup="true">Sản phẩm<svg class="ico ico--sm"><use href="#i-down"/></svg></a>
+              <a data-nav="san-pham" href="san-pham/" aria-haspopup="true">Sản phẩm<svg class="ico ico--sm"><use href="#i-down"/></svg></a>
               <ul class="dropdown">
-                <li><a href="#nhom-nghien">Máy nghiền đá</a></li>
-                <li><a href="#nhom-cat">Máy làm cát nhân tạo</a></li>
-                <li><a href="#nhom-cat">Máy rửa cát, tách cát mịn</a></li>
-                <li><a href="#nhom-nghien">Sàng rung, trạm di động</a></li>
-                <li><a href="#day-chuyen">Dây chuyền theo công suất</a></li>
+                <li><a href="san-pham/#may-nghien-da">Máy nghiền đá</a></li>
+                <li><a href="san-pham/#cat-nhan-tao">Máy làm cát nhân tạo</a></li>
+                <li><a href="san-pham/#rua-cat">Máy rửa cát, tách cát mịn</a></li>
+                <li><a href="san-pham/#sang-tram">Sàng rung, trạm di động</a></li>
+                <li><a href="san-pham/#tuyen-quang">Thiết bị tuyển quặng</a></li>
+                <li><a href="san-pham/#day-chuyen">Dây chuyền theo công suất</a></li>
               </ul>
             </li>
-            <li><a href="#dich-vu">Dịch vụ</a></li>
-            <li><a href="#du-an">Dự án</a></li>
-            <li><a href="#tin-tuc">Tin tức</a></li>
-            <li><a href="#bao-gia">Báo giá</a></li>
-            <li><a href="#lien-he">Liên hệ</a></li>
+            <li><a data-nav="dich-vu" href="dich-vu/">Dịch vụ</a></li>
+            <li><a data-nav="du-an" href="category/du-an-cong-trinh/">Dự án</a></li>
+            <li class="has-dropdown">
+              <a data-nav="tin-tuc" href="category/tin-tuc/" aria-haspopup="true">Tin tức<svg class="ico ico--sm"><use href="#i-down"/></svg></a>
+              <ul class="dropdown">
+                <li><a href="category/tin-tuc/">Tin công ty</a></li>
+                <li><a href="category/tu-van-ky-thuat/">Tư vấn kỹ thuật</a></li>
+              </ul>
+            </li>
+            <li><a data-nav="bao-gia" href="bao-gia/">Báo giá</a></li>
+            <li><a data-nav="lien-he" href="lien-he/">Liên hệ</a></li>
           </ul>
         </nav>
         <button class="search-btn" id="searchBtn" aria-label="Tìm kiếm" aria-expanded="false" aria-controls="searchBox"><svg class="ico"><use href="#i-search"/></svg></button>
@@ -127,7 +137,6 @@
     </div>
   </header>
 
-  <!-- ============ OFF-CANVAS MENU (mobile) ============ -->
   <div class="offcanvas" id="offcanvas" aria-hidden="true">
     <div class="offcanvas__bg" data-close></div>
     <div class="offcanvas__panel" role="dialog" aria-modal="true" aria-label="Menu">
@@ -137,29 +146,38 @@
         <button type="submit" aria-label="Tìm"><svg class="ico"><use href="#i-search"/></svg></button>
       </form>
       <ul class="mnav">
-        <li><a href="#top">Trang chủ</a></li>
-        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a data-nav="home" href="./">Trang chủ</a></li>
+        <li><a data-nav="gioithieu" href="gioithieu/">Giới thiệu</a></li>
         <li class="mnav__sub">
-          <a href="#san-pham">Sản phẩm</a>
+          <a data-nav="san-pham" href="san-pham/">Sản phẩm</a>
           <button class="mnav__toggle" aria-expanded="false" aria-label="Mở danh mục sản phẩm"><svg class="ico"><use href="#i-down"/></svg></button>
           <ul>
-            <li><a href="#nhom-nghien">Máy nghiền đá</a></li>
-            <li><a href="#nhom-cat">Máy làm cát nhân tạo</a></li>
-            <li><a href="#nhom-cat">Máy rửa cát, tách cát mịn</a></li>
-            <li><a href="#day-chuyen">Dây chuyền theo công suất</a></li>
+            <li><a href="san-pham/#may-nghien-da">Máy nghiền đá</a></li>
+            <li><a href="san-pham/#cat-nhan-tao">Máy làm cát nhân tạo</a></li>
+            <li><a href="san-pham/#rua-cat">Máy rửa cát, tách cát mịn</a></li>
+            <li><a href="san-pham/#sang-tram">Sàng rung, trạm di động</a></li>
+            <li><a href="san-pham/#tuyen-quang">Thiết bị tuyển quặng</a></li>
           </ul>
         </li>
-        <li><a href="#dich-vu">Dịch vụ</a></li>
-        <li><a href="#du-an">Dự án</a></li>
-        <li><a href="#tin-tuc">Tin tức</a></li>
-        <li><a href="#bao-gia">Báo giá</a></li>
-        <li><a href="#lien-he">Liên hệ</a></li>
+        <li><a data-nav="dich-vu" href="dich-vu/">Dịch vụ</a></li>
+        <li><a data-nav="du-an" href="category/du-an-cong-trinh/">Dự án</a></li>
+        <li class="mnav__sub">
+          <a data-nav="tin-tuc" href="category/tin-tuc/">Tin tức</a>
+          <button class="mnav__toggle" aria-expanded="false" aria-label="Mở danh mục tin tức"><svg class="ico"><use href="#i-down"/></svg></button>
+          <ul>
+            <li><a href="category/tin-tuc/">Tin công ty</a></li>
+            <li><a href="category/tu-van-ky-thuat/">Tư vấn kỹ thuật</a></li>
+          </ul>
+        </li>
+        <li><a data-nav="bao-gia" href="bao-gia/">Báo giá</a></li>
+        <li><a data-nav="lien-he" href="lien-he/">Liên hệ</a></li>
       </ul>
       <a class="offcanvas__call" href="tel:0912712772"><svg class="ico"><use href="#i-phone"/></svg>0912 712 772</a>
     </div>
   </div>
+  <!-- /layout:header -->
 
-  <main id="top">
+  <main id="main">
     <!-- ============ BANNER SLIDER ============ -->
     <section class="slider" id="slider" aria-roledescription="carousel" aria-label="Banner">
       <div class="slider__track">
@@ -221,7 +239,7 @@
           <p><b>Công ty Cổ phần Thiết bị và Dịch vụ Kỹ thuật Thanh Long</b> (Thanh Long JSC) cung cấp, lắp đặt và bảo trì máy nghiền đá, máy làm cát nhân tạo, máy rửa cát và dây chuyền nghiền sàng công suất <b>50 – 2.000 tấn/giờ</b> cho mỏ đá granite, bazan, đá vôi và sỏi sông.</p>
           <p>Với hơn 10 năm trong ngành nghiền đá và cát nhân tạo, đội kỹ sư Thanh Long trực tiếp khảo sát mỏ, tính cấu hình bằng phần mềm mô phỏng công suất, lắp đặt, chạy thử và đồng hành bảo trì suốt vòng đời máy.</p>
           <p>Khách hàng của Thanh Long gồm doanh nghiệp khai thác tư nhân và các dự án hạ tầng nhà nước trên cả nước.</p>
-          <a class="button button--primary" href="#lien-he">Xem chi tiết<svg class="ico ico--sm"><use href="#i-right"/></svg></a>
+          <a class="button button--primary" href="gioithieu/">Xem chi tiết<svg class="ico ico--sm"><use href="#i-right"/></svg></a>
         </div>
         <figure class="about__img reveal">
           <img src="assets/img/tram-thanh-long.webp" alt="Trạm nghiền đá do Thanh Long lắp đặt" width="1080" height="810" loading="lazy">
@@ -261,7 +279,7 @@
         </div>
 
         <div class="group" id="nhom-nghien">
-          <div class="group__bar"><h3>Máy nghiền đá</h3><a href="https://thegioimaynghienda.com/may-nghien-da-1x2-lon-nhat-tai-viet-nam/">Xem thêm<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
+          <div class="group__bar"><h3>Máy nghiền đá</h3><a href="san-pham/#may-nghien-da">Xem tất cả<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
           <div class="products">
             <article class="product reveal">
               <a class="product__img" href="#bao-gia" data-pick="Máy kẹp hàm"><img src="assets/img/du-an-bao-tri.webp" alt="Máy nghiền hàm" width="566" height="400" loading="lazy"></a>
@@ -299,7 +317,7 @@
         </div>
 
         <div class="group" id="nhom-cat">
-          <div class="group__bar"><h3>Cát nhân tạo &amp; rửa cát</h3><a href="https://thegioimaynghienda.com/may-lam-cat-nhan-tao/">Xem thêm<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
+          <div class="group__bar"><h3>Cát nhân tạo &amp; rửa cát</h3><a href="san-pham/#cat-nhan-tao">Xem tất cả<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
           <div class="products">
             <article class="product reveal">
               <a class="product__img" href="#bao-gia" data-pick="Máy nghiền cát nhân tạo (vo đá)"><img src="assets/img/vsi.webp" alt="Máy làm cát VSI" width="1280" height="960" loading="lazy"></a>
@@ -402,19 +420,19 @@
       <div class="container">
         <div class="section-title reveal"><h2>Dự án</h2></div>
         <div class="posts">
-          <a class="post post--overlay reveal" href="https://thegioimaynghienda.com/category/du-an-cong-trinh/">
+          <a class="post post--overlay reveal" href="category/du-an-cong-trinh/">
             <div class="post__img"><img src="assets/img/du-an-300.webp" alt="Lắp đặt dây chuyền nghiền đá 300 tấn/giờ" width="800" height="369" loading="lazy"><span class="date"><b>17</b>Th10</span></div>
             <h3>Dây chuyền nghiền đá 300 tấn/giờ Thanh Long JSC</h3>
           </a>
-          <a class="post post--overlay reveal" href="https://thegioimaynghienda.com/category/du-an-cong-trinh/">
+          <a class="post post--overlay reveal" href="category/du-an-cong-trinh/">
             <div class="post__img"><img src="assets/img/tach-cat-min.webp" alt="Máy tách cát mịn thu hồi cát từ nước rửa" width="1104" height="960" loading="lazy"><span class="date"><b>17</b>Th10</span></div>
             <h3>Thu hồi cát mịn từ nước rửa trong dây chuyền cát nhân tạo</h3>
           </a>
-          <a class="post post--overlay reveal" href="https://thegioimaynghienda.com/category/du-an-cong-trinh/">
+          <a class="post post--overlay reveal" href="category/du-an-cong-trinh/">
             <div class="post__img"><img src="assets/img/vsi.webp" alt="Trạm nghiền cát nhân tạo" width="1280" height="960" loading="lazy"><span class="date"><b>04</b>Th10</span></div>
             <h3>Trạm nghiền cát nhân tạo thay thế cát tự nhiên</h3>
           </a>
-          <a class="post post--overlay reveal" href="https://thegioimaynghienda.com/category/du-an-cong-trinh/">
+          <a class="post post--overlay reveal" href="category/du-an-cong-trinh/">
             <div class="post__img"><img src="assets/img/du-an-bao-tri.webp" alt="Bảo trì máy kẹp hàm" width="566" height="400" loading="lazy"><span class="date"><b>02</b>Th10</span></div>
             <h3>Dịch vụ bảo trì máy kẹp hàm SJC</h3>
           </a>
@@ -497,7 +515,7 @@
             <h3>Dây chuyền nghiền đá cát kết sản xuất cát xây dựng</h3>
           </a>
         </div>
-        <div class="center reveal"><a class="button button--outline" href="https://thegioimaynghienda.com/category/tu-van-ky-thuat/">Xem tất cả bài viết<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
+        <div class="center reveal"><a class="button button--outline" href="category/tu-van-ky-thuat/">Xem tất cả bài viết<svg class="ico ico--sm"><use href="#i-right"/></svg></a></div>
       </div>
     </section>
 
@@ -526,18 +544,18 @@
           </div>
         </div>
 
-        <form class="quote__form reveal" id="quoteForm" novalidate>
+        <form class="quote__form js-form reveal" id="quoteForm" novalidate>
           <h2 class="block-title">Nhận báo giá</h2>
           <p class="quote__note">Điền thông tin, kỹ sư Thanh Long sẽ gọi lại để tư vấn cấu hình.</p>
           <div class="field-row">
             <div class="field">
               <label for="q-name">Họ tên <span>*</span></label>
-              <input id="q-name" name="name" autocomplete="name" required>
+              <input id="q-name" name="name" autocomplete="name" data-check="name">
               <p class="field__err" id="q-name-err">Vui lòng nhập họ tên.</p>
             </div>
             <div class="field">
               <label for="q-phone">Số điện thoại <span>*</span></label>
-              <input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+              <input id="q-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" data-check="phone">
               <p class="field__err" id="q-phone-err">Số điện thoại chưa đúng (9–11 số).</p>
             </div>
           </div>
@@ -581,17 +599,17 @@
             <textarea id="q-note" name="note" rows="3" placeholder="Ví dụ: đá 1×2, cát 0–5, mỏ ở Đồng Nai..."></textarea>
           </div>
           <button class="button button--primary button--block" type="submit">Gửi yêu cầu báo giá</button>
-          <div class="quote__done" id="quoteDone" hidden tabindex="-1">
+          <div class="form-done" data-done hidden tabindex="-1">
             <svg class="ico"><use href="#i-check"/></svg>
-            <div><b>Đã nhận yêu cầu của <span id="doneName"></span>.</b> Kỹ sư Thanh Long sẽ gọi lại trong giờ làm việc.</div>
+            <div><b>Đã nhận yêu cầu của <span data-done-name></span>.</b> Kỹ sư Thanh Long sẽ gọi lại trong giờ làm việc.</div>
           </div>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer" id="lien-he">
+  <!-- layout:footer — sửa ở index.html rồi chạy: python3 tools/sync-layout.py -->
+  <footer class="footer">
     <div class="container footer__in">
       <div class="footer__col footer__col--wide">
         <h3 class="footer__title">Công ty CP Thiết bị và Dịch vụ Kỹ thuật Thanh Long</h3>
@@ -606,24 +624,26 @@
       <div class="footer__col">
         <h3 class="footer__title">Menu</h3>
         <ul class="footer__links">
-          <li><a href="#top">Trang chủ</a></li>
-          <li><a href="#gioi-thieu">Giới thiệu</a></li>
-          <li><a href="#san-pham">Sản phẩm</a></li>
-          <li><a href="#dich-vu">Dịch vụ</a></li>
-          <li><a href="#du-an">Dự án</a></li>
-          <li><a href="#tin-tuc">Tin tức</a></li>
-          <li><a href="#bao-gia">Báo giá</a></li>
+          <li><a href="./">Trang chủ</a></li>
+          <li><a href="gioithieu/">Giới thiệu</a></li>
+          <li><a href="san-pham/">Sản phẩm</a></li>
+          <li><a href="dich-vu/">Dịch vụ</a></li>
+          <li><a href="category/du-an-cong-trinh/">Dự án</a></li>
+          <li><a href="category/tin-tuc/">Tin tức</a></li>
+          <li><a href="category/tu-van-ky-thuat/">Tư vấn kỹ thuật</a></li>
+          <li><a href="bao-gia/">Báo giá</a></li>
+          <li><a href="lien-he/">Liên hệ</a></li>
         </ul>
       </div>
       <div class="footer__col">
         <h3 class="footer__title">Sản phẩm</h3>
         <ul class="footer__links">
-          <li><a href="#nhom-nghien">Máy nghiền hàm</a></li>
-          <li><a href="#nhom-nghien">Máy nghiền côn</a></li>
-          <li><a href="#nhom-nghien">Máy nghiền phản kích</a></li>
-          <li><a href="#nhom-cat">Máy làm cát VSI</a></li>
-          <li><a href="#nhom-cat">Máy rửa cát</a></li>
-          <li><a href="#nhom-cat">Máy tách cát mịn</a></li>
+          <li><a href="san-pham/#may-nghien-da">Máy nghiền hàm</a></li>
+          <li><a href="san-pham/#may-nghien-da">Máy nghiền côn</a></li>
+          <li><a href="san-pham/#may-nghien-da">Máy nghiền phản kích</a></li>
+          <li><a href="san-pham/#cat-nhan-tao">Máy làm cát VSI</a></li>
+          <li><a href="san-pham/#rua-cat">Máy rửa cát</a></li>
+          <li><a href="san-pham/#rua-cat">Máy tách cát mịn</a></li>
         </ul>
         <div class="footer__social">
           <a href="https://zalo.me/0912712772" rel="noopener" aria-label="Zalo" class="soc soc--zalo">Zalo</a>
@@ -646,7 +666,6 @@
     </div>
   </footer>
 
-  <!-- ============ FLOATING CONTACT ============ -->
   <div class="float">
     <a class="float__btn float__btn--zalo" href="https://zalo.me/0912712772" rel="noopener" aria-label="Nhắn Zalo">Zalo</a>
     <a class="float__btn float__btn--call" href="tel:0912712772" aria-label="Gọi 0912 712 772"><svg class="ico"><use href="#i-phone"/></svg></a>
@@ -656,20 +675,19 @@
   <nav class="mbar" aria-label="Liên hệ nhanh">
     <a href="tel:0912712772"><svg class="ico"><use href="#i-phone"/></svg>Gọi điện</a>
     <a href="https://zalo.me/0912712772" rel="noopener"><span class="mbar__zalo">Zalo</span>Nhắn Zalo</a>
-    <a href="#bao-gia" class="mbar__quote">Báo giá</a>
+    <a href="bao-gia/" class="mbar__quote">Báo giá</a>
   </nav>
 
-  <!-- ============ CONSULT POPUP ============ -->
   <div class="popup" id="popup" hidden>
     <div class="popup__bg" data-close></div>
     <div class="popup__box" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
       <button class="popup__close" data-close aria-label="Đóng"><svg class="ico"><use href="#i-close"/></svg></button>
-      <h2 id="popupTitle">Quý khách cần tư vấn?</h2>
+      <p class="popup__title" id="popupTitle">Quý khách cần tư vấn?</p>
       <p>Để lại số điện thoại, kỹ sư Thanh Long sẽ gọi lại tư vấn cấu hình máy phù hợp với mỏ của quý khách.</p>
-      <form id="popupForm" novalidate>
+      <form class="js-form" id="popupForm" novalidate>
         <div class="field">
           <label class="sr-only" for="p-phone">Số điện thoại</label>
-          <input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Số điện thoại (*)" required>
+          <input id="p-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Số điện thoại (*)" data-check="phone">
           <p class="field__err" id="p-phone-err">Số điện thoại chưa đúng (9–11 số).</p>
         </div>
         <div class="field">
@@ -677,10 +695,11 @@
           <input id="p-need" name="need" placeholder="Nhu cầu (máy, công suất...)">
         </div>
         <button class="button button--primary button--block" type="submit">Nhận tư vấn</button>
+        <p class="form-done" data-done hidden tabindex="-1">Cảm ơn quý khách. Kỹ sư sẽ gọi lại sớm.</p>
       </form>
-      <p class="popup__done" id="popupDone" hidden>Cảm ơn quý khách. Kỹ sư sẽ gọi lại sớm.</p>
     </div>
   </div>
+  <!-- /layout:footer -->
 
   <script src="assets/js/main.js" defer></script>
 </body>
